@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		A5F5D7BD4C1A13BD06E2670E /* Pods_marubatsu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E1A0887399B82460DE2F3C0 /* Pods_marubatsu.framework */; };
+		DB6B34D921CAB44000208F2D /* TKSwarmAlert.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB6B34D821CAB44000208F2D /* TKSwarmAlert.framework */; };
 		DB779DE22089C5F300704C7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB779DE12089C5F300704C7A /* AppDelegate.swift */; };
 		DB779DE42089C5F300704C7A /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB779DE32089C5F300704C7A /* MainVC.swift */; };
 		DB779DE92089C5F400704C7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DB779DE82089C5F400704C7A /* Assets.xcassets */; };
@@ -16,12 +17,14 @@
 		DB779DF72089CB3E00704C7A /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB779DF62089CB3E00704C7A /* SeparatorView.swift */; };
 		DB779DFC2089D58700704C7A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB779DFB2089D58700704C7A /* Model.swift */; };
 		DB779DFE2089D63E00704C7A /* Presenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB779DFD2089D63E00704C7A /* Presenter.swift */; };
+		DB779E00208A04AA00704C7A /* ExUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB779DFF208A04AA00704C7A /* ExUIViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4E1A0887399B82460DE2F3C0 /* Pods_marubatsu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_marubatsu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		869C34C45EED2CAC8CD7DDC4 /* Pods-marubatsu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marubatsu.release.xcconfig"; path = "Pods/Target Support Files/Pods-marubatsu/Pods-marubatsu.release.xcconfig"; sourceTree = "<group>"; };
 		A42BB0D7855E86EE0C671E79 /* Pods-marubatsu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marubatsu.debug.xcconfig"; path = "Pods/Target Support Files/Pods-marubatsu/Pods-marubatsu.debug.xcconfig"; sourceTree = "<group>"; };
+		DB6B34D821CAB44000208F2D /* TKSwarmAlert.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TKSwarmAlert.framework; path = Carthage/Build/iOS/TKSwarmAlert.framework; sourceTree = "<group>"; };
 		DB779DDE2089C5F200704C7A /* marubatsu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = marubatsu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DB779DE12089C5F300704C7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DB779DE32089C5F300704C7A /* MainVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVC.swift; sourceTree = "<group>"; };
@@ -32,6 +35,7 @@
 		DB779DF62089CB3E00704C7A /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		DB779DFB2089D58700704C7A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		DB779DFD2089D63E00704C7A /* Presenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Presenter.swift; sourceTree = "<group>"; };
+		DB779DFF208A04AA00704C7A /* ExUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExUIViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DB6B34D921CAB44000208F2D /* TKSwarmAlert.framework in Frameworks */,
 				A5F5D7BD4C1A13BD06E2670E /* Pods_marubatsu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,6 +54,7 @@
 		4F2B6C44933CC901ED804E96 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				DB6B34D821CAB44000208F2D /* TKSwarmAlert.framework */,
 				4E1A0887399B82460DE2F3C0 /* Pods_marubatsu.framework */,
 			);
 			name = Frameworks;
@@ -83,6 +89,7 @@
 				DB779DE82089C5F400704C7A /* Assets.xcassets */,
 				DB779DEA2089C5F400704C7A /* LaunchScreen.storyboard */,
 				DB779DED2089C5F400704C7A /* Info.plist */,
+				DB779DFF208A04AA00704C7A /* ExUIViewController.swift */,
 			);
 			path = marubatsu;
 			sourceTree = "<group>";
@@ -118,6 +125,7 @@
 				DB779DDC2089C5F200704C7A /* Resources */,
 				3D7C7AF2D2D0B5F3ED2D7AFA /* [CP] Embed Pods Frameworks */,
 				6C642266E0633C54490B0F0F /* [CP] Copy Pods Resources */,
+				DB6B34DA21CAB44900208F2D /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -229,6 +237,24 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		DB6B34DA21CAB44900208F2D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/TKSwarmAlert.framework",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -240,6 +266,7 @@
 				DB779DFC2089D58700704C7A /* Model.swift in Sources */,
 				DB779DE42089C5F300704C7A /* MainVC.swift in Sources */,
 				DB779DF52089C8C100704C7A /* Button.swift in Sources */,
+				DB779E00208A04AA00704C7A /* ExUIViewController.swift in Sources */,
 				DB779DF72089CB3E00704C7A /* SeparatorView.swift in Sources */,
 				DB779DE22089C5F300704C7A /* AppDelegate.swift in Sources */,
 			);
@@ -380,6 +407,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 922P3K9888;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = marubatsu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -399,6 +430,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 922P3K9888;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = marubatsu/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

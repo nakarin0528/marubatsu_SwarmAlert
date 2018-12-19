@@ -9,8 +9,10 @@
 import UIKit
 import SnapKit
 import Material
+import TKSwarmAlert
 
 class MainVC: UIViewController {
+
     private var currentTurn = 1
     enum Turn: Int {
         case circle = 1
@@ -25,12 +27,25 @@ class MainVC: UIViewController {
 
     var buttonArray: [[CustomButton]] = [[],[],[]]
 
-    
+    private lazy var reStartButton: FlatButton = {
+        let btn = FlatButton()
+        btn.title = "restart"
+        btn.titleLabel?.font = .boldSystemFont(ofSize: 18)
+        btn.titleColor = .white
+        btn.layer.cornerRadius = 20
+        btn.backgroundColor = UIColor(red: 255/255, green: 99/255, blue: 71/255, alpha: 1.0)
+        btn.layer.shadowOffset = CGSize(width: 0, height: 2)
+        btn.layer.shadowRadius = 2
+        btn.layer.shadowOpacity = 0.5
+        btn.addTarget(self, action: #selector(reStart), for: .touchUpInside)
+        return btn
+    }()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(red: 85/255, green: 186/255, blue: 172/255, alpha: 1.0)
 
-        reStart()
+        start()
         setUpViews()
     }
 
@@ -38,7 +53,7 @@ class MainVC: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
-    private func reStart() {
+    private func start() {
         for i in 0...2 {
             for j in 0...2 {
                 buttonArray[i].append(CustomButton())
@@ -48,18 +63,83 @@ class MainVC: UIViewController {
         }
     }
 
+    @objc private func reStart() {
+        for i in 0...2 {
+            for j in 0...2 {
+                buttonArray[i][j].title = ""
+                buttonArray[i][j].isEnabled = true
+                buttonArray[i][j].currentState = 0
+            }
+        }
+    }
+
+    private func check() {
+        // 横方向探査
+        for i in 0...2 {
+            var beforeValue = 0
+            for j in 0...2 {
+//                print("BeforeValue: \(beforeValue), state: \(buttonArray[i][j].currentState)")
+                if beforeValue != buttonArray[i][j].currentState && j != 0 || buttonArray[i][j].currentState == 0 {
+                    break
+                }
+                beforeValue = buttonArray[i][j].currentState
+                if j == 2 {
+                    print("おめでとう！")
+                }
+             }
+        }
+
+        // 縦方向探査
+        for i in 0...2 {
+            var beforeValue = 0
+            for j in 0...2 {
+//                print("BeforeValue: \(beforeValue), state: \(buttonArray[i][j].currentState)")
+                if beforeValue != buttonArray[j][i].currentState && j != 0 || buttonArray[j][i].currentState == 0 {
+                    break
+                }
+                beforeValue = buttonArray[j][i].currentState
+                if j == 2 {
+                    print("おめでとう！")
+                }
+            }
+        }
+
+        // 斜め方向探査
+        var beforeValue = 0
+        for i in 0...2 {
+            if beforeValue != buttonArray[i][i].currentState && i != 0 || buttonArray[i][i].currentState == 0 {
+                break
+            }
+            beforeValue = buttonArray[i][i].currentState
+            if i == 2 {
+                print("おめでとう！")
+            }
+        }
+        beforeValue = 0
+        for i in 0...2 {
+            if beforeValue != buttonArray[i][2-i].currentState && i != 0 || buttonArray[i][2-i].currentState == 0 {
+                break
+            }
+            beforeValue = buttonArray[i][2-i].currentState
+            if i == 2 {
+                print("おめでとう！")
+            }
+        }
+    }
+
     @objc private func buttonDidTap(btn: CustomButton) {
 
         btn.isEnabled = false
         if currentTurn == Turn.circle.rawValue {
-            btn.setTitle("○", for: .normal)
+            btn.title = "○"
             btn.currentState = Turn.circle.rawValue
             currentTurn = Turn.cross.rawValue
         } else {
-            btn.setTitle("×", for: .normal)
+            btn.title = "×"
             btn.currentState = Turn.cross.rawValue
             currentTurn = Turn.circle.rawValue
         }
+        check()
     }
 
     private func setUpViews() {
@@ -75,6 +155,8 @@ class MainVC: UIViewController {
                 view.addSubview(buttonArray[i][j])
             }
         }
+
+        view.addSubview(reStartButton)
 
         separatorView1.snp.makeConstraints {
             $0.centerY.equalToSuperview().offset(-1*margin)
@@ -99,6 +181,7 @@ class MainVC: UIViewController {
             $0.height.equalTo(separatorView1.snp.width)
             $0.width.equalTo(10)
         }
+
         buttonArray[0][0].snp.makeConstraints {
             $0.bottom.equalTo(separatorView1.snp.top)
             $0.right.equalTo(separatorView3.snp.left)
@@ -143,6 +226,13 @@ class MainVC: UIViewController {
             $0.top.equalTo(separatorView2.snp.bottom)
             $0.left.equalTo(separatorView4.snp.right)
             $0.size.equalTo(buttonSize)
+        }
+
+        reStartButton.snp.makeConstraints {
+            $0.bottom.equalTo(bottomMargin()).inset(30)
+            $0.height.equalTo(40)
+            $0.width.equalTo(140)
+            $0.centerX.equalToSuperview()
         }
     }
 }
