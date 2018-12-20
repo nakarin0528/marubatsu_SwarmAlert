@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  marubatsu
 //
-//  Created by Iko Nakari on 2018/04/20.
+//  Created by Iko Nakari on 2018/12/21.
 //  Copyright © 2018年 nakarin0528. All rights reserved.
 //
 
@@ -18,6 +18,8 @@ class MainVC: UIViewController {
         case circle = 1
         case cross = 2
     }
+
+    private let alert = TKSwarmAlert(backgroundType: .brightBlur)
 
     private let separatorView1 = SeparatorView()
     private let separatorView2 = SeparatorView()
@@ -47,6 +49,10 @@ class MainVC: UIViewController {
 
         start()
         setUpViews()
+
+        alert.didDissmissAllViews = {
+            self.reStart()
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -78,13 +84,14 @@ class MainVC: UIViewController {
         for i in 0...2 {
             var beforeValue = 0
             for j in 0...2 {
-//                print("BeforeValue: \(beforeValue), state: \(buttonArray[i][j].currentState)")
                 if beforeValue != buttonArray[i][j].currentState && j != 0 || buttonArray[i][j].currentState == 0 {
                     break
                 }
                 beforeValue = buttonArray[i][j].currentState
                 if j == 2 {
-                    print("おめでとう！")
+                    let isWin = beforeValue == 1
+                    alert.spawn(makeResultView(isWin: isWin))
+                    alert.show(makeResultView(isWin: isWin))
                 }
              }
         }
@@ -93,13 +100,14 @@ class MainVC: UIViewController {
         for i in 0...2 {
             var beforeValue = 0
             for j in 0...2 {
-//                print("BeforeValue: \(beforeValue), state: \(buttonArray[i][j].currentState)")
                 if beforeValue != buttonArray[j][i].currentState && j != 0 || buttonArray[j][i].currentState == 0 {
                     break
                 }
                 beforeValue = buttonArray[j][i].currentState
                 if j == 2 {
-                    print("おめでとう！")
+                    let isWin = beforeValue == 1
+                    alert.spawn(makeResultView(isWin: isWin))
+                    alert.show(makeResultView(isWin: isWin))
                 }
             }
         }
@@ -112,7 +120,9 @@ class MainVC: UIViewController {
             }
             beforeValue = buttonArray[i][i].currentState
             if i == 2 {
-                print("おめでとう！")
+                let isWin = beforeValue == 1
+                alert.spawn(makeResultView(isWin: isWin))
+                alert.show(makeResultView(isWin: isWin))
             }
         }
         beforeValue = 0
@@ -122,7 +132,9 @@ class MainVC: UIViewController {
             }
             beforeValue = buttonArray[i][2-i].currentState
             if i == 2 {
-                print("おめでとう！")
+                let isWin = beforeValue == 1
+                alert.spawn(makeResultView(isWin: isWin))
+                alert.show(makeResultView(isWin: isWin))
             }
         }
     }
